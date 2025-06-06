@@ -16,9 +16,9 @@ face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_fro
 
 # --- Servo Settings ---
 PAN_MIN = 40
-PAN_MAX = 130
+PAN_MAX = 120
 TILT_MIN = 50
-TILT_MAX = 135
+TILT_MAX = 160
 
 # Offset compensation (adjust these experimentally)
 CAM_OFFSET_X = 30  # negative: camera is left of turret
@@ -38,7 +38,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = face_classifier.detectMultiScale(
-        gray, scaleFactor=1.1, minNeighbors=8, minSize=(40, 40)
+        gray, scaleFactor=1.1, minNeighbors=8, minSize=(50, 50)
     )
 
     if len(faces) > 0:
@@ -77,3 +77,4 @@ while True:
 cam.release()
 cv2.destroyAllWindows()
 ser.close()
+
